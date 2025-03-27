@@ -11,7 +11,7 @@ import SwiftUI
 struct watchers_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TimeSelectionView()
         }
     }
 }
