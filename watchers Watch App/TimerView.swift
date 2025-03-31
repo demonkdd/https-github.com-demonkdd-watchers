@@ -38,7 +38,7 @@ struct TimerView: View {
         }
         _counter = State(initialValue: self.timeRemaining)
     }
-    
+    //the diffrent colors for the timers
     private var colorForRing: Color {
         let range = counter / timeRemaining
         if range >= 0.5 {

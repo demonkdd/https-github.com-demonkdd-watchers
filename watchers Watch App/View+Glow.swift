@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//color of the timer bars
 extension View {
     func glow(color: Color = .red, radius: CGFloat = 10) -> some View {
         self

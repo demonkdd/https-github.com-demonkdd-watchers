@@ -17,7 +17,7 @@ struct ContentView: View {
                     .padding(.top, -21.0)
                 Text("Main Menu")
                     .padding(.bottom, 10)
-                
+                //this is where you can change the formatting of the menu buttons
                 NavigationLink("Start Timer", destination: TimeSelectionView())
                     .padding()
                     .frame(width: 155, height: 55)

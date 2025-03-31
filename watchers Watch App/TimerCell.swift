@@ -33,6 +33,7 @@ struct TimerCell: View {
                 .frame(height: WKInterfaceDevice.current().screenBounds.height * 0.48)
         }
     }
+    //this is the formatting for the clocks where you can change the color and such
     private func dialView(title: String, subtitle: String) -> some View {
         ZStack {
             Timers()
