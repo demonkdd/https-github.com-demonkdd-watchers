@@ -31,25 +31,29 @@ struct SetSchedule: View {
             .bold()
             .padding(.top, -21.0)
             .padding()
-        List {
-            ForEach(events) { event in
-                Button {
-                    requestCalendarAcess(event)
-                } label: {
-                    HStack {
-                        Text("\(formatter.string(from: event.date))")
-                        Text(event.title)
-                            .font(.headline)
+        NavigationStack {
+            VStack {
+                Button { requestCalendarAcess(events.first!)} label: { Text("Add Event") }
+                List {
+                    ForEach(events) { event in
+                        Button {
+                            requestCalendarAcess(event)
+                        } label: {
+                            HStack {
+                                Text("\(formatter.string(from: event.date))")
+                                Text(event.title)
+                                    .font(.headline)
+                            }
+                        }
+                        
                     }
                 }
-                
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text(alertTitle), message: Text(alertMessage))
+                }
             }
         }
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text(alertTitle), message: Text(alertMessage))
-        }
     }
-       
     
     private func requestCalendarAcess( _ event: Event) {
         let eventStore = EKEventStore()
@@ -62,7 +66,7 @@ struct SetSchedule: View {
                 calendarEvent.endDate = event.date
                 calendarEvent.calendar = eventStore.defaultCalendarForNewEvents
                 do {
-                    try eventStore.save(calendarEvent, span: .thisEvent)
+                    //try eventStore.save(calendarEvent, span: .thisEvent)
                     alertTitle = "Event Added"
                     alertMessage = "Added Event"
                     showAlert = true
